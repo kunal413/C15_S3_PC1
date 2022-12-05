@@ -6,7 +6,7 @@ import com.niit.jap.springBootApp.exception.UserNotFoundException;
 import java.util.List;
 
 public interface UserService {
-    public User saveUser(User user);
+    public User saveUser(User user)throws UserNotFoundException;
     public User findByEmailIdAndPassword(String EmailId,String password)throws UserNotFoundException;
     List<User> getAllUsers();
 }

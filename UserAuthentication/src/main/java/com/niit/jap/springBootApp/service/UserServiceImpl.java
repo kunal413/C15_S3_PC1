@@ -15,7 +15,10 @@ public class UserServiceImpl implements UserService{
         this.userRepository=userRepository;
     }
     @Override
-    public User saveUser(User user) {
+    public User saveUser(User user)throws UserNotFoundException {
+        if (userRepository.findById(user.getEmailId()).isPresent()){
+            throw new UserNotFoundException();
+        }
         return userRepository.save(user);
     }
 

@@ -32,6 +32,7 @@
 	<modules>
 		<module>UserAuthentication</module>
 		<module>UserProductService</module>
+
 	</modules>
 
 	<build>

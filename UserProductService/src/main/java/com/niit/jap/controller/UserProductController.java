@@ -3,6 +3,7 @@ package com.niit.jap.controller;
 import com.niit.jap.domain.Product;
 import com.niit.jap.domain.User;
 import com.niit.jap.exception.UserNotFoundException;
+import com.niit.jap.rabbitmq.CommonUser;
 import com.niit.jap.service.UserProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,11 @@ public class UserProductController {
             throw new UserNotFoundException();
         }
         return responseEntity;
+    }
+    @PostMapping("/common")
+    public ResponseEntity<?> adduserDetails(@RequestBody CommonUser commonUser){
+
+        return new ResponseEntity<>(userProductService.addUser1(commonUser),HttpStatus.OK);
     }
     @PutMapping("/addproduct/{userId}")
     public  ResponseEntity<?> saveUserProduct(@PathVariable int userId, @RequestBody Product product) throws UserNotFoundException{
